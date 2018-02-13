@@ -10,6 +10,13 @@ selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
 console.log (selectedWord);
 var unknownWord=[];
 var testletter = "";
+buildBlankWord = function(){
+		for (var i=0; i<selectedWord.length; i++){
+			unknownWord.push(" _ ");
+		};
+		console.log(unknownWord.join(""));
+	}
+
 
 inquirer.prompt([
 {
@@ -20,29 +27,53 @@ inquirer.prompt([
 }
 ])
 .then(function(inquirerResponse) {
-	if (inquirerResponse.play === "no") {
-		return
-	}else
-	inquirer.prompt([
-	{
-		type: "input",
-		message: "Guess a Letter: ",
-		name: "guess"
+	buildBlankWord();
+
+	var playGame = function() {
+
+	if (inquirerResponse.play === "yes" && guessesLeft>0) {
+
+
+
+		inquirer.prompt([
+		{
+			type: "input",
+			message: "Guess a Letter: ",
+			name: "guess"
+		}
+		])
+		.then(function(inquirerResponse) {
+			testletter = inquirerResponse.guess;
+			console.log("You Guessed: " + testletter);
+			var output = new Word(testletter,unknownWord);
+			console.log("********************");
+			output.buildWord();
+			console.log(output);
+			console.log("88888888888888888888888");
+			unknownWord=output.unknownWord;
+			console.log(unknownWord.join(""));
+
+
+			guessesLeft--;
+			console.log("Guesses Left: " + guessesLeft);
+
+			playGame();
+
+
+
+		});
 	}
-	])
-	.then(function(inquirerResponse) {
-		testletter = inquirerResponse.guess;
-		console.log("You Guessed: " + testletter);
-		var output = new Word(testletter);
-		console.log("********************");
-		output.buildWord();
-		console.log(output);
+	else {
+		console.log("Goodbye and good karma!");
+		return;
+	}
+
+	};
+
+	playGame();
+	// };
+	// };
+// };
 
 
-
-
-
-	});
-
-	
 })

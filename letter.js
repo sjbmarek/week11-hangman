@@ -12,7 +12,7 @@ function Letter(guess) {
 			if(this.guess === correctLetter) {
 				this.unknownLetter = this.guess;
 				this.isPresent = true;
-			}; 
+			};
 			console.log("Unknown Letter .let: " + this.unknownLetter);
 			console.log("Match .let: " + this.isPresent);
 	};
