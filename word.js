@@ -12,12 +12,12 @@ function Word(guess,unknownWord) {
 	this.output={};
 
 
-	this.letterPresent = function(){
-		if (this.output.isPresent) {
-			this.letterThere = true;
-			console.log("Letter There: " + this.letterThere);
-		}
-	};
+	// this.letterPresent = function(){
+	// 	if (this.output.isPresent) {
+	// 		this.letterThere = true;
+	// 		console.log("Letter There: " + this.letterThere);
+	// 	}
+	// };
 
 	this.buildWord = function(){
 		// console.log("UNKNOWN WORD ARRAY: " + this.unknownWord);
@@ -26,17 +26,20 @@ function Word(guess,unknownWord) {
 			var output = new Letter(guess);
 			output.let();
 			// console.log("IS PRESENT: " + output.isPresent);
+			if(output.isPresent) {
+				this.letterThere = true;
+			}
 			// this.unknownWord.push(output.unknownLetter);
-			if ((this.unknownWord[i] === " _ ") && (output.unknownLetter !== " _ ")) {
-			this.unknownWord[i] = (output.unknownLetter);
-		};
-			this.letterPresent();
-	
+			if ((this.unknownWord[i] === "_") && (output.unknownLetter !== "_")) {
+				this.unknownWord[i] = (output.unknownLetter);
+			};
+			// this.letterPresent();
+
 			// console.log("From Word Constructor");
 			// console.log(this.unknownWord);
 			// console.log("Letter There: " + this.letterThere);
 
-	
+
 
 		};
 		// console.log("____________________");
@@ -45,7 +48,7 @@ function Word(guess,unknownWord) {
 
 
 
-	};
+};
 
 //  var output = new Word("o");
 //  console.log(output);

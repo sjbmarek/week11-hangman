@@ -2,7 +2,7 @@
 
 
 function Letter(guess) {
-	this.unknownLetter = " _ ",
+	this.unknownLetter = "_",
 	this.guess = guess;
 	this.isPresent = false;
 	// console.log("Guess: " + guess);
