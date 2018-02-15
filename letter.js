@@ -1,4 +1,4 @@
-// var correctLetter = "k";
+
 
 
 function Letter(guess) {
@@ -17,13 +17,6 @@ function Letter(guess) {
 			// console.log("Match .let: " + this.isPresent);
 	};
 };
-
-// var output = new Letter("k");
-// console.log(output);
-// console.log("_______________________")
-// output.let();
-// console.log(output);
-
 
 
 module.exports = Letter;
