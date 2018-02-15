@@ -20,27 +20,27 @@ function Word(guess,unknownWord) {
 	};
 
 	this.buildWord = function(){
-		console.log("UNKNOWN WORD ARRAY: " + this.unknownWord);
+		// console.log("UNKNOWN WORD ARRAY: " + this.unknownWord);
 		for (var i=0; i<selectedWord.length; i++){
 			correctLetter = selectedWord.charAt(i);
 			var output = new Letter(guess);
 			output.let();
-			console.log("IS PRESENT: " + output.isPresent);
+			// console.log("IS PRESENT: " + output.isPresent);
 			// this.unknownWord.push(output.unknownLetter);
 			if ((this.unknownWord[i] === " _ ") && (output.unknownLetter !== " _ ")) {
 			this.unknownWord[i] = (output.unknownLetter);
 		};
 			this.letterPresent();
 	
-			console.log("From Word Constructor");
-			console.log(this.unknownWord);
-			console.log("Letter There: " + this.letterThere);
+			// console.log("From Word Constructor");
+			// console.log(this.unknownWord);
+			// console.log("Letter There: " + this.letterThere);
 
 	
 
 		};
-		console.log("____________________");
-		console.log(this.unknownWord.join(""));
+		// console.log("____________________");
+		// console.log(this.unknownWord.join(""));
 	};
 
 

@@ -16,49 +16,60 @@ buildBlankWord = function(){
 		};
 		console.log(unknownWord.join(""));
 	}
+	wordFinished = function(){
+		finished = true;
+		for (var i=0; i<selectedWord.length; i++){
+			if(unknownWord[i] === " _ "){
+				finished = false;
+				console.log("WORD FINISHED?");
+			};
+			if(finished){
+				console.log("CORRECT!!");
+			};
+		};
+	}
 
 
 inquirer.prompt([
 {
 	type: "list",
-	message: "Play Hangman?",
+	message: "Welcome to Prana Hangman!  Would you like to play?",
 	choices: ["yes", "no"],
 	name: "play"
 }
 ])
 .then(function(inquirerResponse) {
-	buildBlankWord();
+	
 
 	var playGame = function() {
 
 	if (inquirerResponse.play === "yes" && guessesLeft>0) {
 
 
-
 		inquirer.prompt([
 		{
 			type: "input",
-			message: "Guess a Letter: ",
+			message: "Select a Letter: ",
 			name: "guess"
 		}
 		])
 		.then(function(inquirerResponse) {
 			testletter = inquirerResponse.guess;
-			console.log("You Guessed: " + testletter);
+			console.log("You Selected: " + testletter);
 			var output = new Word(testletter,unknownWord);
-			console.log("********************");
+			// console.log("********************");
 			output.buildWord();
-			console.log(output);
-			console.log("88888888888888888888888");
+			// console.log(output);
+			// console.log("88888888888888888888888");
 			unknownWord=output.unknownWord;
-			console.log(unknownWord.join(""));
+			console.log(unknownWord.join(" "));
 
 
 			guessesLeft--;
-			console.log("Guesses Left: " + guessesLeft);
+			console.log("Selections remaining: " + guessesLeft);
 
 			playGame();
-
+			wordFinished();
 
 
 		});
@@ -69,7 +80,7 @@ inquirer.prompt([
 	}
 
 	};
-
+	buildBlankWord();
 	playGame();
 	// };
 	// };
