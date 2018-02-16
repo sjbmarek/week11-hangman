@@ -26,21 +26,28 @@ wordFinished = function(){
 	if (guessesLeft === 0){
 		console.log("GAME OVER.\n");
 		console.log("The word was: " + selectedWord + "\n");  
-		console.log("Ctrl C to start over.\n");
+		// console.log("Ctrl C to start over.\n");
+		process.exit();
+		// reset();
+		// ask();
 	};
 	if(finished){
 		console.log("CORRECT!!\n");  
-		console.log("Ctrl C to start over.\n");
-			// playGame(); recursion start??
+		// console.log("Ctrl C to start over.\n");
+		process.exit();
+		// reset();
+		// ask();
 	};
 }
 
+var ask = function(){
+	buildBlankWord();
 
 	inquirer.prompt([
 	{
 		type: "list",
 		message: "\nWelcome to Prana Hangman!  Would you like to play?\n",
-		choices: ["yes", "no"],
+		choices: ["no", "yes"],
 		name: "play"
 	}
 	])
@@ -50,7 +57,6 @@ wordFinished = function(){
 		var playGame = function() {
 
 			if (inquirerResponse.play === "yes" && guessesLeft>0) {
-
 
 				inquirer.prompt([
 				{
@@ -79,11 +85,24 @@ wordFinished = function(){
 				});
 			}
 			else {
-				console.log("Goodbye and good karma!");
+				console.log("Goodbye and good karma!\n");
 				return;
 			}
 
 		};
-		buildBlankWord();
+		// buildBlankWord();
 		playGame();
 	})
+
+}
+
+reset = function(){
+	guessesLeft = 10;
+	selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
+// console.log (selectedWord +"\n\n");
+	unknownWord=[];
+	testletter = "";
+}
+
+console.log("\n_____________________________\n");
+ask();
