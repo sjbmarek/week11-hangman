@@ -32,8 +32,8 @@ wordFinished = function(){
 		console.log("CORRECT!!\n");  
 		console.log("Ctrl C to start over.\n");
 			// playGame(); recursion start??
-		};
-	}
+	};
+}
 
 
 	inquirer.prompt([
@@ -63,20 +63,20 @@ wordFinished = function(){
 					testletter = inquirerResponse.guess;
 					console.log("\nYou Selected: " + testletter + "\n");
 					var output = new Word(testletter,unknownWord);
-			output.buildWord();
-			// console.log(output);
-			// console.log(output.letterThere);
-			if (!output.letterThere){
-				guessesLeft--;
-				console.log("INCORRECT GUESS\n");
-				console.log("Incorrect selections remaining: " + guessesLeft + "\n");
-			};
-			unknownWord=output.unknownWord;
-			console.log(unknownWord.join(" ") + "\n");
-			wordFinished();
-			playGame();
+					output.buildWord();
+					// console.log(output);
+					// console.log(output.letterThere);
+					if (!output.letterThere){
+						guessesLeft--;
+						console.log("INCORRECT GUESS\n");
+						console.log("Incorrect selections remaining: " + guessesLeft + "\n");
+					};
+					unknownWord=output.unknownWord;
+					console.log(unknownWord.join(" ") + "\n");
+					wordFinished();
+					playGame();
 
-		});
+				});
 			}
 			else {
 				console.log("Goodbye and good karma!");
